@@ -1,6 +1,6 @@
 import random
-print("Welcome to my guessing number game!")
-print("Good luck and have fun!")
+print("--------------- Welcome to my guessing number game! ----------------")
+print("--------------- Good luck and have fun! ----------------")
 def guessingNumber():
     newListOfNumbers = []
     print("Start range is from 0 to your choice")
