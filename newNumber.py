@@ -2,6 +2,7 @@ import random
 print("--------------- Welcome to my guessing number game! ----------------")
 print("--------------- Good luck and have fun! ----------------")
 def guessingNumber():
+    score = 100
     newListOfNumbers = []
     print("Start range is from 0 to your choice")
     newRange = int(input("Choose range of number to guess: "))
@@ -10,7 +11,7 @@ def guessingNumber():
     chooseTheNumberForPlayer = int(random.choice(newListOfNumbers))
     print("#-------------------------------- Your range is between 0 and", newRange, "---------------------#")
     playerNumber = int(input("Choose your number between above range: "))
-    while chooseTheNumberForPlayer != playerNumber:
+    while chooseTheNumberForPlayer != playerNumber and (score > 0):
         if playerNumber < chooseTheNumberForPlayer:
             if (chooseTheNumberForPlayer % 2 == 0):
                 print("Your number is lower than the given number which can divisible by 2")
@@ -43,8 +44,10 @@ def guessingNumber():
                     print("Try these numbers", helpPlayer3)
                 else:
                     print("You can do it :D")
+            score = score - random.randint(15,20)
 
             playerNumber = int(input("Nice guess, but not enough, try again: "))
+        
         else:
             if (chooseTheNumberForPlayer % 2 == 0):
                 print("Your number is higher than the given number which can divisible by 2")
@@ -66,6 +69,7 @@ def guessingNumber():
                     print("Try these numbers:", helpPlayer5, "if doesn't works try plus 3 to highest number on this list")
                 else:
                     print("You can do it :D")
+
             else:
                 print("Your number is higher than the given number either divisible by 3 nor 2")
                 if (newRange >= 50):
@@ -77,9 +81,14 @@ def guessingNumber():
                     print("Try these numbers", helpPlayer6)
                 else:
                     print("You can do it :D")
+            score = score - random.randint(15,20)
             playerNumber = int(input("Nice guess, but not enough, try again: "))
     else:
-        print("Congratulations, you have done the game!")
+        if score > 0:
+            print("Congratulations, you have done the game!")
+            print("Here is your score:", score)
+        else:
+            print("You are out of score, better luck next time")
         input("Press any key to end")
 
 guessingNumber()
